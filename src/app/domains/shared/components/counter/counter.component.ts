@@ -28,5 +28,30 @@ export class CounterComponent {
     console.log('ngOnChanges')
     console.log('-'.repeat(10))
     console.log(changes)
+    console.log('-'.repeat(10))
+  }
+
+  ngOnInit() {
+    // Despues de renderizado
+    // Corre una vez
+    // Correr cosas asincronas, ejemplo, traer la lista de productos
+    console.log('ngOnInit')
+    console.log('-'.repeat(10))
+    console.log(`duration => ${this.duration}`)
+    console.log(`message => ${this.message}`)
+    console.log('-'.repeat(10))
+  }
+
+  ngAfterViewInit() {
+    //After render
+    //Preguntar si los hijos del componente ya fueron renderizados
+    console.log('ngAfterViewInit')
+    console.log('-'.repeat(10))
+  }
+
+  ngOnDestroy() {
+    //Elimina
+    console.log('ngOnDestroy')
+    console.log('-'.repeat(10))
   }
 }
