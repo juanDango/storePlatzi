@@ -1,7 +1,13 @@
-<input type="number" [value]="duration()" (change)="changeDuration($event)">
-<hr />
-<input type="text" [value]="message()" (change)="changeMessage($event)">
-<hr />
-@if (duration() > 0) {
-  <app-counter [duration]="duration()" [message]="message()"/>
-}
+<div class="px-10">
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente veniam velit ipsum earum quis ratione est molestiae eum! Itaque aliquam animi quaerat cumque aliquid officia quibusdam maiores, impedit reprehenderit a.</p>
+
+  @if (duration() > 0) {
+    <p class="text-xs">Número de clientes: </p>
+    <app-counter [duration]="duration()" [message]="message()"/>
+  }
+  <div>
+    <app-wave-audio audioUrl="assets/audio.mp3"/>
+  </div>
+</div>
+
