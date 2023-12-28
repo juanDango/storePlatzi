@@ -2,6 +2,6 @@
 <hr />
 <input type="text" [value]="message()" (change)="changeMessage($event)">
 <hr />
-@if (duration() <= 1000) {
+@if (duration() > 0) {
   <app-counter [duration]="duration()" [message]="message()"/>
 }
