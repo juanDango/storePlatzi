@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { ProductComponent } from '../../components/product/product.component';
-import { Product } from '../../../shared/models/product.model';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
+import { ProductComponent } from '@products/components/product/product.component';
+import { Product } from '@shared/models/product.model';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -15,75 +16,15 @@ export class ListComponent {
 
   products = signal<Product[]>([])
   private cartService = inject(CartService)
+  private productSevice = inject(ProductService)
 
-  constructor(){
-    const initProducts: Product[] = [
-      {
-        id: Date.now(),
-        title: 'pro 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 2',
-        price: 200,
-        image: 'https://picsum.photos/640/640?r=15',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 3',
-        price: 300,
-        image: 'https://picsum.photos/640/640?r=200',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 4',
-        price: 200,
-        image: 'https://picsum.photos/640/640?r=102',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 5',
-        price: 2100,
-        image: 'https://picsum.photos/640/640?r=70',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 6',
-        price: 300,
-        image: 'https://picsum.photos/640/640?r=2000',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 7',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=43',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 8',
-        price: 2050,
-        image: 'https://picsum.photos/640/640?r=185',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'pro 9',
-        price: 30000,
-        image: 'https://picsum.photos/640/640?r=2080',
-        createdAt: new Date().toISOString()
+  ngOnInit(){
+    this.productSevice.getProducts()
+    .subscribe({
+      next: (products) => {
+        this.products.set(products)
       }
-    ]
-
-    this.products.set(initProducts)
+    })
   }
 
   addToCart(event: Product){
