@@ -29,8 +29,6 @@ export class ProductComponent {
   fecha = signal<string>((new Date()).toISOString())
 
   addToCartHandler(){
-    console.log(this.fecha())
-    console.log(`Se espichó desde el hijo ${this.product.title}`)
     this.addToCart.emit(this.product)
   }
 }
