@@ -17,6 +17,6 @@ export class ProductComponent {
 
   addToCartHandler(){
     console.log(`Se espichó desde el hijo ${this.product.title}`)
-    this.addToCart.emit(`Se ha emitido un evento muajaja ${this.product.title}`)
+    this.addToCart.emit(this.product)
   }
 }
