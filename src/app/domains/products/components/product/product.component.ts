@@ -1,5 +1,6 @@
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
 import { Product } from '@shared/models/product.model';
 import { ReversePipe } from '@shared/pipes/reverse.pipe';
 import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
@@ -12,7 +13,8 @@ import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
     CurrencyPipe,
     DatePipe,
     ReversePipe,
-    TimeAgoPipe
+    TimeAgoPipe,
+    RouterLinkWithHref
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
